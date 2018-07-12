@@ -14,13 +14,13 @@ app.use(bodyParser.json())
 
 app.use(require('./routes/usuario'));
 
-
-mongoose.connect('mongodb://localhost:27017/cafe',
+mongoose.connect(process.env.URLDB,{ useNewUrlParser: true },
 (error,respuesta)=>{
 
-  if(error){throw new Error('No se pudo establecer la conexión con la base de datos')}
+  if(error){throw error}
 
-  else{console.log('Conexion con la base de datos establecida')}})
+  else{console.log('Conexion con la base de datos establecida')}
+})
 
 
 
